@@ -13,7 +13,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative flex h-dvh sm:pt-24 w-full flex-col justify-between overflow-hidden bg-zinc-950 font-sans text-white pt-24 ">
+    <div className="relative flex min-h-[100dvh] sm:pt-24 w-full flex-col justify-between overflow-hidden bg-zinc-950 font-sans text-white pt-24 ">
       
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
