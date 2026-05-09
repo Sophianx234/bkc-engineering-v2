@@ -1,0 +1,145 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+
+interface SupportTab {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+const supportTabs: SupportTab[] = [
+  {
+    id: "monitoring",
+    title: "Monitoring",
+    description: "Real-time performance tracking to detect and resolve issues quickly.",
+    image: "/images/e-3.jpg",
+  },
+  {
+    id: "repairs",
+    title: "Repairs",
+    description: "On-site technical support and hardware replacement to minimize downtime.",
+    image: "/images/e-4.jpg",
+  },
+  {
+    id: "maintenance",
+    title: "Maintenance",
+    description: "Scheduled cleaning and system health checks to ensure peak efficiency.",
+    image: "/images/e-5.jpg",
+  },
+  {
+    id: "warranty",
+    title: "Warranty",
+    description: "Comprehensive coverage for panels and inverters with hassle-free claims.",
+    image: "/images/e-1.png",
+  },
+  {
+    id: "support",
+    title: "Customer Support",
+    description: "Dedicated account managers available 24/7 for all your energy queries.",
+    image: "/images/e-2.jpg",
+  },
+];
+
+export default function AfterSalesSupport() {
+  const [activeTab, setActiveTab] = useState(supportTabs[0]);
+
+  return (
+    <section className="w-full bg-[#0B1121] px-6 py-24 font-sans text-white md:px-12 lg:px-24">
+      <div className="mx-auto max-w-7xl">
+        
+        {/* Header */}
+        <div className="mb-16 flex flex-col items-start justify-between gap-4 md:flex-row">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl font-semibold leading-tight tracking-tight md:text-5xl"
+          >
+            After Installation, <br /> We Don’t Disappear
+          </motion.h2>
+          <span className="text-sm font-medium uppercase tracking-widest text-slate-500">
+            After-sales Support
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
+          {/* Navigation List */}
+          <div className="flex flex-col lg:col-span-4">
+            {supportTabs.map((tab) => {
+              const isActive = activeTab.id === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab)}
+                  className={`group flex items-center justify-between border-b py-5 text-left transition-all duration-300 ${
+                    isActive ? "border-white text-white" : "border-slate-800 text-slate-500 hover:text-slate-300"
+                  }`}
+                >
+                  <span className="text-lg font-medium">{tab.title}</span>
+                  <ArrowUpRight 
+                    size={20} 
+                    className={`transition-transform duration-300 ${isActive ? "translate-x-0 opacity-100" : "translate-x-[-10px] opacity-0 group-hover:opacity-50"}`} 
+                  />
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Content & Stacked Image Gallery */}
+          <div className="lg:col-span-8">
+            <div className="flex flex-col gap-10">
+              
+              {/* Text updates instantly without layout jumping */}
+              <p className="max-w-md text-lg text-slate-300 transition-colors duration-300">
+                {activeTab.description}
+              </p>
+
+              {/* Image Stack Effect */}
+              <div className="relative h-[400px] w-full">
+                
+                {/* Background Stacked Images (Blurred) */}
+                {/* Added transition-opacity so they crossfade smoothly when updating */}
+                <div className="absolute right-0 top-10 h-[300px] w-[250px] translate-x-4 overflow-hidden rounded-3xl opacity-20 blur-sm grayscale transition-opacity duration-500">
+                  <Image src={supportTabs[(supportTabs.indexOf(activeTab) + 1) % supportTabs.length].image} alt="Next support" fill className="object-cover" />
+                </div>
+                <div className="absolute right-10 top-5 h-[320px] w-[280px] translate-x-8 overflow-hidden rounded-3xl opacity-40 blur-[2px] grayscale transition-opacity duration-500">
+                  <Image src={supportTabs[(supportTabs.indexOf(activeTab) + 2) % supportTabs.length].image} alt="Future support" fill className="object-cover" />
+                </div>
+                
+                {/* Main Focused Image Box - Animation isolated here */}
+                <div className="relative z-10 h-full w-full max-w-[500px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900">
+                  <AnimatePresence initial={false}>
+                    <motion.div
+                      key={activeTab.id}
+                      // Solid slide from right (100%) to center (0) to left (-100%)
+                      initial={{ x: "100%" }}
+                      animate={{ x: 0 }}
+                      exit={{ x: "-100%" }}
+                      // Using a premium spring with no bounce for a clean, iOS-style slide
+                      transition={{ type: "spring", bounce: 0, duration: 0.6 }}
+                      className="absolute inset-0 h-full w-full"
+                    >
+                      <Image 
+                        src={activeTab.image} 
+                        alt={activeTab.title} 
+                        fill 
+                        priority
+                        className="object-cover" 
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
