@@ -11,7 +11,6 @@ const solarProjects = [
     title: "Commercial Rooftop Installation",
     location: "Industrial Park, Greater Accra",
     description: "A 500kWp solar array providing 40% energy cost reduction for a manufacturing facility using high-efficiency bifacial modules.",
-    // Valid ID: Commercial Solar Panel Installation Guide
     youtubeId: "2c3QHuF6HWY", 
   },
   {
@@ -19,7 +18,6 @@ const solarProjects = [
     title: "Off-Grid Residential Solution",
     location: "Eco-Village, Kumasi",
     description: "Complete energy independence for a luxury estate featuring lithium-ion storage and smart load management systems.",
-    // Valid ID: Residential Solar Panel Installation Drone Video
     youtubeId: "VPofVCwn_CM", 
   },
   {
@@ -27,7 +25,6 @@ const solarProjects = [
     title: "Sustainable Agriculture Powering",
     location: "Green Farms, Northern Region",
     description: "Solar-powered irrigation system allowing for year-round farming and automated water distribution.",
-    // Valid ID: How to Build a Solar-Powered Irrigation System
     youtubeId: "vgwsF1DQIU8",
   },
 ];
@@ -69,12 +66,10 @@ export default function ProjectVideoSection() {
   };
 
   return (
-    // Switched to h-[100dvh] to lock perfectly to the screen height
     <section className="flex h-[100dvh] w-full flex-col justify-center overflow-hidden bg-slate-50 p-4 font-sans md:p-8 lg:p-12">
-      {/* Added h-full and flex-col to allow inner content to stretch */}
       <div className="mx-auto flex h-full w-full max-w-7xl flex-col">
         
-        {/* Header - shrink-0 guarantees this doesn't compress */}
+        {/* Header */}
         <div className="mb-4 flex shrink-0 items-end justify-between md:mb-8">
           <div className="space-y-1">
             <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase md:text-xs">
@@ -99,7 +94,7 @@ export default function ProjectVideoSection() {
           </div>
         </div>
 
-        {/* Dynamic Container: min-h-0 and flex-1 force it to fill exact remaining space perfectly */}
+        {/* Dynamic Container */}
         <div className="relative min-h-0 w-full flex-1">
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
@@ -114,24 +109,20 @@ export default function ProjectVideoSection() {
                 opacity: { duration: 0.4 },
                 scale: { duration: 0.4 }
               }}
-              // Removed absolute gap values, using percentages/flex to scale
               className="absolute inset-0 flex flex-col gap-4 md:flex-row md:gap-8"
             >
-              {/* The Video Box - Scaled for aspect-ratio on mobile, flex-height on desktop */}
-              <div className="relative w-full shrink-0 overflow-hidden rounded-2xl bg-black md:h-full md:w-3/5 md:rounded-3xl lg:w-2/3">
-                {/* Fallback aspect ratio for mobile view */}
-                <div className="absolute inset-0 pb-[56.25%] md:pb-0">
-                  <iframe
-                    className="absolute inset-0 h-full w-full object-cover"
-                    src={`https://www.youtube.com/embed/${activeProject.youtubeId}?rel=0&modestbranding=1`}
-                    title={activeProject.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
+              {/* THE FIX: Added aspect-video for mobile, removed the absolute wrapper inside */}
+              <div className="relative w-full shrink-0 overflow-hidden rounded-2xl bg-black aspect-video md:aspect-auto md:h-full md:w-3/5 md:rounded-3xl lg:w-2/3">
+                <iframe
+                  className="absolute inset-0 h-full w-full object-cover"
+                  src={`https://www.youtube.com/embed/${activeProject.youtubeId}?rel=0&modestbranding=1`}
+                  title={activeProject.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
 
-              {/* Project Details - Allowed to fill remaining space */}
+              {/* Project Details */}
               <div className="flex flex-1 flex-col justify-center px-2 py-2 md:px-6 md:py-4">
                 <div className="mb-2 flex items-center gap-2 text-slate-600 md:mb-4">
                   <PlayCircle className="h-4 w-4 md:h-5 md:w-5" />
