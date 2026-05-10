@@ -16,22 +16,45 @@ const otherProjects = [
   {
     id: 1,
     location: "East Legon",
-    imageUrl: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-1.jpeg", // Replace with actual project image URL
   },
   {
     id: 2,
     location: "Klagon",
-    imageUrl: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=2058&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-2.jpeg", // Replace with actual project image URL
   },
   {
     id: 3,
     location: "Tema", // Added a 3rd location for the battery system image
-    imageUrl: "https://images.unsplash.com/photo-1511454493857-0a29f2c023c7?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/images/stock/w-3.jpeg", // Replace with actual project image URL
   },
   {
     id: 4,
     location: "Osu",
-    imageUrl: "https://images.unsplash.com/photo-1583345237708-add35a664d77?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageUrl: "/images/stock/w-4.jpeg", // Replace with actual project image URL
+  }
+  ,
+  {
+    id: 5,
+    location: "37 Area",
+    imageUrl: "/images/stock/h-2.jpeg", // Replace with actual project image URL
+  },
+  {
+    id: 6,
+    location: "Tse Ado",
+    imageUrl: "/images/stock/h-6.jpeg", // Replace with actual project image URL
+  }
+  ,
+  {
+    id: 7,
+    location: "Police City",
+    imageUrl: "/images/stock/w-11.jpeg", // Replace with actual project image URL
+  }
+  ,
+  {
+    id: 7,
+    location: "Hatso",
+    imageUrl: "/images/stock/w-13.jpeg", // Replace with actual project image URL
   }
 ];
 
@@ -100,7 +123,7 @@ export default function ProjectsSection() {
             className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] bg-slate-100 lg:aspect-auto lg:h-[500px]"
           >
             <Image
-              src="https://images.unsplash.com/photo-1594818379496-da1e345b0ded?q=80&w=2070&auto=format&fit=crop"
+              src="/images/stock/w-19.jpeg"
               alt="Workers installing solar panels on a roof"
               fill
               className="object-cover"

@@ -19,37 +19,37 @@ const services: Service[] = [
     id: "01",
     title: "Solar System Design & Consultation",
     description: "Tailored solar solutions built around your energy needs, budget, and environment. We analyze your infrastructure to design the most efficient array possible.",
-    imageUrl: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-14.jpeg",
   },
   {
     id: "02",
     title: "Energy Audits",
     description: "Comprehensive energy audits to identify waste, project potential savings, and optimize your overall power consumption architecture.",
-    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-2.jpeg",
   },
   {
     id: "03",
     title: "Backup Power Solutions",
     description: "Robust battery storage and hybrid inverter setups ensuring zero downtime and complete energy independence during grid failures.",
-    imageUrl: "https://images.unsplash.com/photo-1620288627223-53302f4e8c74?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-16.jpeg",
   },
   {
     id: "04",
     title: "Solar Installation",
     description: "Expert deployment by certified engineers, ensuring optimal panel placement, secure mounting, and seamless grid integration.",
-    imageUrl: "https://images.unsplash.com/photo-1508514177221-188b1c77eca2?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-1.jpeg",
   },
   {
     id: "05",
     title: "Maintenance & Repairs",
     description: "Ongoing monitoring, preventative maintenance, and rapid-response repair services to keep your system operating at peak efficiency year-round.",
-    imageUrl: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-9.jpeg",
   },
   {
     id: "06",
     title: "Electrical Engineering Services",
     description: "End-to-end electrical design, load balancing, and custom circuitry planning for complex commercial and residential energy networks.",
-    imageUrl: "https://images.unsplash.com/photo-1555964645-a13437e429eb?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-20.jpeg",
   },
 ];
 
@@ -113,8 +113,7 @@ export default function ServicesSection() {
                   alt={activeService.title}
                   fill
                   priority
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 60vw"
+                  className="object-cover object-[center_30%]"
                 />
               </motion.div>
             </AnimatePresence>

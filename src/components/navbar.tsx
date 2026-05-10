@@ -17,6 +17,34 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // --- Scroll State ---
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // --- Scroll Event Listener ---
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== "undefined") {
+        // If scrolling down and past 80px, hide the navbar
+        if (window.scrollY > lastScrollY && window.scrollY > 80) {
+          setIsVisible(false);
+        } else {
+          // If scrolling up, show the navbar
+          setIsVisible(true);
+        }
+        // Remember current page location for the next scroll event
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", controlNavbar);
+      return () => {
+        window.removeEventListener("scroll", controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
 
   // Automatically close the mobile menu when the route changes
   useEffect(() => {
@@ -27,20 +55,27 @@ export default function Navbar() {
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      // Force navbar to be visible if the menu is open
+      setIsVisible(true); 
     } else {
       document.body.style.overflow = "unset";
     }
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="absolute left-0 right-0 top-0 z-50">
+    <motion.header 
+      // Changed to fixed so it stays in the viewport
+      className="fixed left-0 right-0 top-0 z-50 w-full"
+      // Slide up (-100%) when hidden, slide back to 0 when visible
+      initial={{ y: -100 }}
+      animate={{ y: isVisible ? 0 : "-100%" }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} // Apple-style easing
+    >
+      {/* Dynamic Background: Adds a slight blur/darkening when scrolling down from the very top */}
+      <div className={`absolute inset-0 transition-colors duration-500 ${lastScrollY > 20 ? 'bg-black/40 backdrop-blur-md border-b border-white/5' : 'bg-transparent'}`} />
+
       {/* Navigation Bar */}
-      <motion.nav 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative flex w-full items-center justify-between px-6 py-6 md:px-12 lg:px-16"
-      >
+      <nav className="relative flex w-full items-center justify-between px-6 py-4 md:px-12 lg:px-16 lg:py-6">
         {/* Logo Glassmorphism Pill */}
         <Link 
           href="/" 
@@ -90,7 +125,7 @@ export default function Navbar() {
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Dropdown Menu */}
       <AnimatePresence>
@@ -136,6 +171,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.header>
   );
 }

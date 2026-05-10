@@ -69,7 +69,7 @@ export default function BenefitsSection() {
             className="group relative  w-full overflow-hidden rounded-[2rem] bg-slate-800 shadow-xl md:h-full"
           >
             <Image
-              src="/images/e-1.png"
+              src="/images/stock/w-13.jpeg"
               alt="Engineer overlooking a modern solar farm"
               fill
               sizes=""

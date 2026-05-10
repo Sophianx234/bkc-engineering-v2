@@ -28,17 +28,21 @@ function ProjectItem({ project, index }: projectItemProps) {
         viewport={{ once: true, margin: "-100px" }}
         transition={{
           duration: 0.8,
-          delay: index * 0.2, // Stagger the entrance
           ease: [0.16, 1, 0.3, 1], // Premium Apple-like easing curve
         }}
       >
         {/* Image Container with subtle hover zoom */}
-        {/* Added 'aspect-[4/3]' so the Next Image 'fill' prop actually has a container height to fill */}
         <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-800">
+          
+          {/* Skeleton Loader: Gives the illusion of speed while the image downloads */}
+          <div className="absolute inset-0 animate-pulse bg-slate-700/50" />
+
           <Image
             src={project.imageUrl}
             alt={`Solar installation in ${project.location}`}
             fill
+            // PRELOADS the first 4 images instantly, skipping Next.js lazy-loading
+            priority={index < 4} 
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />

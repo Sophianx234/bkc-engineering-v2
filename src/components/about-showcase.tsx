@@ -18,19 +18,19 @@ const statements = [
     id: "mission",
     title: "Our Mission",
     text: "To deliver reliable, innovative, and sustainable energy solutions that power growth and reduce costs.",
-    imageUrl: "/images/m-1.jpg",
+    imageUrl: "/images/stock/h-6.jpeg",
   },
   {
     id: "vision",
     title: "Our Vision",
     text: "To lead the future of sustainable energy through innovation, excellence, and impact.",
-    imageUrl: "/images/m-2.jpg",
+    imageUrl: "/images/stock/w-20.jpeg",
   },
   {
     id: "goal",
     title: "Our Goal",
     text: "To expand access to clean energy solutions while continuously improving service delivery.",
-    imageUrl: "/images/m-3.jpg",
+    imageUrl: "/images/stock/h-2.jpeg",
   },
 ];
 

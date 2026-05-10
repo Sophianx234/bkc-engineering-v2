@@ -17,31 +17,31 @@ const supportTabs: SupportTab[] = [
     id: "monitoring",
     title: "Monitoring",
     description: "Real-time performance tracking to detect and resolve issues quickly.",
-    image: "/images/e-3.jpg",
+    image: "/images/stock/w-5.jpeg",
   },
   {
     id: "repairs",
     title: "Repairs",
     description: "On-site technical support and hardware replacement to minimize downtime.",
-    image: "/images/e-4.jpg",
+    image: "/images/stock/h-2.jpeg",
   },
   {
     id: "maintenance",
     title: "Maintenance",
     description: "Scheduled cleaning and system health checks to ensure peak efficiency.",
-    image: "/images/e-5.jpg",
+    image: "/images/stock/w-20.jpeg",
   },
   {
     id: "warranty",
     title: "Warranty",
     description: "Comprehensive coverage for panels and inverters with hassle-free claims.",
-    image: "/images/e-1.png",
+    image: "/images/stock/h-1.jpeg",
   },
   {
     id: "support",
     title: "Customer Support",
     description: "Dedicated account managers available 24/7 for all your energy queries.",
-    image: "/images/e-2.jpg",
+    image: "https://images.pexels.com/photos/7689735/pexels-photo-7689735.jpeg?q=80&w=2070&auto=format&fit=crop",
   },
 ];
 

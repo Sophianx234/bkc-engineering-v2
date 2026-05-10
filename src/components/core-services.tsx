@@ -24,7 +24,7 @@ const servicesData: CoreService[] = [
     overlayText: "Tailored solar solutions built around your energy needs, budget, and environment.",
     ctaText: "Get a Quote",
     ctaLink: "#quote",
-    imageUrl: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072&auto=format&fit=crop",
+    imageUrl: "/images/stock/h-4.jpeg",
     features: [
       "Energy needs assessment",
       "Site evaluation & feasibility analysis",
@@ -38,7 +38,7 @@ const servicesData: CoreService[] = [
     overlayText: "We analyze your energy consumption to identify inefficiencies and reduce costs.",
     ctaText: "Learn More",
     ctaLink: "#learn-more",
-    imageUrl: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-16.jpeg",
     features: [
       "Energy usage analysis",
       "Identification of energy waste",
@@ -46,14 +46,14 @@ const servicesData: CoreService[] = [
       "Cost-saving strategies",
     ],
   },
-{
+  {
     id: "03",
     title: "Backup Power Solutions",
     overlayText: "Ensure uninterrupted power supply with reliable backup systems for homes and businesses.",
     ctaText: "Get a Quote",
     ctaLink: "#quote",
     // Represents a modern, clean electrical/battery inverter setup
-    imageUrl: "https://images.unsplash.com/photo-1620288627223-53302f4e8c74?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/stock/w-10.jpeg",
     features: [
       "Battery storage solutions",
       "Hybrid inverter systems",
@@ -97,6 +97,7 @@ const servicesData: CoreService[] = [
     overlayText: "We keep your system operating at peak performance with regular maintenance and fast repairs.",
     ctaText: "Get a Quote",
     ctaLink: "#quote",
+
     imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Routine system inspections",

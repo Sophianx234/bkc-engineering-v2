@@ -40,7 +40,7 @@ export default function HeroSection() {
           className="max-w-4xl"
         >
           {/* Responsive Typography: Scales from 4xl on mobile to 7xl on desktop */}
-          <motion.h1 variants={fadeUpVariant} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
+          <motion.h1 variants={fadeUpVariant} className="text-4xl sm:text-5xl md:text-6xl  font-bold leading-[1.1] tracking-tight">
             We Are More Than <br className="hidden md:block" />
             Energy Providers. <span className="text-yellow-400">We <br className="hidden md:block" />
             Are Your Power Partner!</span>

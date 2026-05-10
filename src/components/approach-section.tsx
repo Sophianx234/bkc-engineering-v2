@@ -109,7 +109,7 @@ export default function ApproachSection() {
             {/* The wrapper handles the rounded corners and aspect ratio */}
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] shadow-xs md:aspect-[16/11]">
               <Image
-                src="/images/e-6.jpg"
+                src="/images/stock/h-1.jpeg"
                 alt="Engineers reviewing plans at construction site"
                 fill
                 

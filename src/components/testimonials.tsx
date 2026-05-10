@@ -6,119 +6,129 @@ import { motion } from "framer-motion";
 interface Testimonial {
   id: string;
   quote: string;
-  author: string;
+  name: string;
+  location: string;
+  delay: number; // For staggered animation in circular path
 }
 
 // --- Data ---
 const testimonials: Testimonial[] = [
   {
     id: "01",
-    quote: "BKC Engineering installed a 20kW solar system for our home, and the results have been excellent. We now have reliable power even during outages, and our electricity costs have reduced significantly.",
-    author: "Homeowner, Cantonments",
+    quote: "The system is working fine and I’m extremely grateful. Take care",
+    name: "Lawyer Kwame Agyeman",
+    location: "Ashaley Botwe Sch junction",
+    delay: 0,
   },
   {
     id: "02",
-    quote: "The team delivered a complete solar and battery solution for our facility. Their professionalism and attention to detail ensured everything was completed on time and works perfectly.",
-    author: "Operations Manager, Klagon",
+    quote: "Good evening. Yes, we are using the system as you advised. No problems at all and I’m enjoying it",
+    name: "Madam Juliet",
+    location: "Danfa",
+    delay: 0.1,
   },
   {
     id: "03",
-    quote: "Power outages used to disrupt our operations, but since installing the backup system from BKC Engineering, we've had consistent and uninterrupted power.",
-    author: "Business Owner, Accra",
+    quote: "BKC Engineering did an excellent job on my solar installation. The team was professional, punctual, and explained everything clearly...",
+    name: "Mr. Kwadwo Doffour",
+    location: "Kumawu (Omama Hotel & Apartment)",
+    delay: 0.2,
   },
   {
     id: "04",
-    quote: "What stood out for us was their after-sales support. The team regularly checks the system and responds quickly whenever we need assistance.",
-    author: "Facility Manager, East Legon",
+    quote: "BKC Engineering exceeded my expectations. Your workmanship is neat...",
+    name: "DCOP David Amoako",
+    location: "Nkansah Executive Lodge - Kumasi Oduom",
+    delay: 0.3,
+  },
+  {
+    id: "05",
+    quote: "You responded quickly to my inquiry and delivered exactly what you promised...",
+    name: "Mr. Enoch Bolfrey",
+    location: "Cantoments",
+    delay: 0.4,
+  },
+  {
+    id: "06",
+    quote: "I’m very impressed with the quality of work from you...",
+    name: "Bismarck",
+    location: "Dzemeni - Galilee Island",
+    delay: 0.5,
   },
 ];
 
-// --- Animation Variants ---
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } 
-  },
-};
-
-// --- Reusable Card Component ---
+// --- Card Component ---
 const TestimonialCard = ({ data }: { data: Testimonial }) => (
-  <motion.div 
-    variants={cardVariants}
-    className="flex flex-col justify-between rounded-[2rem] rounded-br-2xl bg-white p-8 shadow-xl md:p-10"
+  <motion.div
+    initial={{ opacity: 0, scale: 0.8 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: data.delay, ease: "easeOut" }}
+    className="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex flex-col gap-4 w-[340px]"
   >
-    <div>
-      {/* Heavy stylized quotation mark */}
-      <span className="font-serif text-5xl font-black leading-none text-slate-800">
-        “
-      </span>
-      <p className="mt-4 text-sm leading-relaxed text-slate-700 md:text-base">
+    <div className="flex gap-2">
+      <span className="text-4xl font-serif text-slate-800">“</span>
+      <p className="text-slate-700 text-sm leading-relaxed pt-2">
         {data.quote}
       </p>
     </div>
     
-    <div className="mt-8 text-right">
-      <span className="text-sm font-semibold text-slate-400">
-        ~ {data.author}
-      </span>
+    <div className="border-t border-slate-100 pt-4 flex flex-col gap-1.5">
+      <span className="font-semibold text-slate-900 text-sm">By: {data.name}</span>
+      <div className="flex items-center gap-1.5 text-slate-500">
+        {/* Map Pin Icon */}
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span className="text-xs">Location: {data.location}</span>
+      </div>
     </div>
   </motion.div>
 );
 
-export default function TestimonialsSection() {
-  // Split data into two columns for the staggered masonry effect
-  const leftColumn = [testimonials[0], testimonials[2]];
-  const rightColumn = [testimonials[1], testimonials[3]];
-
+export default function CircularTestimonials() {
   return (
-    <section className="w-full bg-white px-6 py-24 font-sans md:px-12 lg:px-24">
-      <div className="mx-auto max-w-6xl">
+    <section className="w-full bg-[#344356] py-24 px-6 md:px-12">
+      <div className="mx-auto max-w-7xl">
         
-        {/* Deep Slate Background Container */}
-        <div className="relative w-full overflow-hidden rounded-[2.5rem] bg-[#344356] px-6 py-16 md:px-16 md:py-24 lg:px-20 lg:py-28 shadow-2xl">
-          
-          {/* Subtle Top-Left Section Header */}
-          <div className="absolute left-8 top-8 md:left-12 md:top-12">
-            <span className="text-xs font-bold tracking-widest text-white/80 md:text-sm">
-              Testimonials
-            </span>
-          </div>
-
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-8 md:mt-0 md:grid-cols-2 md:gap-12"
-          >
-            
-            {/* Left Column */}
-            <div className="flex flex-col gap-8 md:gap-12">
-              {leftColumn.map((testimonial) => (
-                <TestimonialCard key={testimonial.id} data={testimonial} />
-              ))}
-            </div>
-
-            {/* Right Column (Staggered downwards via margin-top on desktop) */}
-            <div className="flex flex-col gap-8 md:mt-24 md:gap-12">
-              {rightColumn.map((testimonial) => (
-                <TestimonialCard key={testimonial.id} data={testimonial} />
-              ))}
-            </div>
-
-          </motion.div>
+        {/* Header */}
+        <div className="mb-16">
+          <span className="text-sm font-bold tracking-widest text-white/70 uppercase">
+            Testimonials
+          </span>
         </div>
 
+        <div className="relative flex justify-center items-center h-[700px]">
+          
+          {/* Central Logo */}
+            <div className=" rounded-xl flex justify-center items-center text-white/80 font-bold text-3xl">
+              BKC
+            </div>
+
+          {/* Testimonial Cards on Circular Path */}
+          {/* Using CSS grid/absolute positioning to place cards around the center */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2">
+            <TestimonialCard data={testimonials[0]} />
+          </div>
+          <div className="absolute top-20 right-10">
+            <TestimonialCard data={testimonials[1]} />
+          </div>
+          <div className="absolute bottom-20 right-10">
+            <TestimonialCard data={testimonials[2]} />
+          </div>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+            <TestimonialCard data={testimonials[3]} />
+          </div>
+          <div className="absolute bottom-20 left-10">
+            <TestimonialCard data={testimonials[4]} />
+          </div>
+          <div className="absolute top-20 left-10">
+            <TestimonialCard data={testimonials[5]} />
+          </div>
+
+          {/* Decorative faint circle lines */}
+          <div className="absolute w-[600px] h-[600px] border border-white/10 rounded-full pointer-events-none" />
+          <div className="absolute w-[850px] h-[850px] border border-white/5 rounded-full pointer-events-none" />
+
+        </div>
       </div>
     </section>
   );
