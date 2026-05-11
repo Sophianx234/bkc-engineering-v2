@@ -11,6 +11,7 @@ import {
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
+import Link from 'next/link';
 
 // --- HELPER FUNCTION TO RANDOMIZE IMAGES ---
 // Randomizes your local images for a realistic product feel
@@ -481,10 +482,11 @@ export default function ProductsSection() {
                   ))}
                 </ul>
 
-                <button className="mt-auto w-full flex items-center justify-center gap-3 bg-[#061d38] hover:bg-[#04c453] text-white py-4 sm:py-5 px-8 font-bold text-[15px] uppercase tracking-wider transition-colors duration-300 rounded-sm shadow-md">
+                <Link href="/contact"
+                className="mt-auto w-full flex items-center justify-center gap-3 bg-[#061d38] hover:bg-amber-400 text-white py-4 sm:py-5 px-8 font-bold text-[15px] uppercase tracking-wider transition-colors duration-300 rounded-sm shadow-md">
                   <ShoppingCart size={20} />
-                  Add to Quote Request
-                </button>
+                  Contact Us now
+                </Link>
               </div>
 
             </motion.div>
