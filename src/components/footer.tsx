@@ -85,7 +85,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Column 2: Company Links */}
-          <motion.div variants={itemVariants} className="flex flex-col lg:col-span-2 lg:col-start-6">
+          <motion.div variants={itemVariants} className="flex flex-col  lg:col-span-2 lg:col-start-6">
             <h3 className="mb-6 text-lg font-medium tracking-wide text-white">Company</h3>
             <ul className="flex flex-col gap-4 text-sm text-slate-400">
               <li><Link href="#home" className="transition-colors hover:text-white">Home</Link></li>

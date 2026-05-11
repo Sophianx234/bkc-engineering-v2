@@ -14,7 +14,6 @@ import {
 import Link from 'next/link';
 
 // --- HELPER FUNCTION TO RANDOMIZE IMAGES ---
-// Randomizes your local images for a realistic product feel
 const getRandomImages = (count: number) => {
   const allImages = [
     "/images/stock/p-1.jpeg", "/images/stock/p-2.jpeg", "/images/stock/p-3.jpeg", 
@@ -25,183 +24,84 @@ const getRandomImages = (count: number) => {
   return shuffled.slice(0, count);
 };
 
-// --- MOCK PRODUCT DATA (25 Items) ---
+// --- MOCK PRODUCT DATA (25 Items - PRICES REMOVED) ---
+// --- MOCK PRODUCT DATA (Your Official Portfolio) ---
 const PRODUCTS = [
   {
-    id: 1, title: "SunMax Pro 500W Panel", category: "Commercial Solar", price: "Request Quote",
-    shortDesc: "High-efficiency monocrystalline panel designed for large-scale commercial roofs.",
-    description: "The SunMax Pro 500W utilizes advanced half-cut cell technology to maximize energy output even in partially shaded conditions.",
-    features: ["21.5% Maximum Efficiency", "Half-cut cell architecture", "PID Resistant", "25-year warranty"],
-    images: ["/images/stock/p-1.jpeg", "/images/stock/p-4.jpeg"]
+    id: 1, 
+    title: "Bifacial Solar Panels", 
+    category: "Solar Panels",
+    shortDesc: "High-efficiency panels that capture sunlight from both the front and back for maximum yield.",
+    description: "Our advanced solar panels are engineered to capture photons of suitable sunlight from both the front and back surfaces, significantly increasing your overall energy output. We offer a versatile range of capacities from 180W up to 615W to perfectly match the energy requirements of any residential, commercial, or industrial project.",
+    features: [
+      "180W to 615W capacity options", 
+      "Bifacial technology for increased energy output", 
+      "High photon capture efficiency", 
+      "Durable design for extreme weather conditions"
+    ],
+    images: [
+      "https://plus.unsplash.com/premium_photo-1677993355347-92715eae6806?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
+      "https://images.unsplash.com/photo-1614366502473-e54666693b44?q=80&w=938&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ]
   },
   {
-    id: 2, title: "EcoGrid Smart Inverter", category: "Power Conversion", price: "$1,250.00",
-    shortDesc: "Intelligent string inverter with real-time grid monitoring and app integration.",
-    description: "Convert DC power to AC with industry-leading 99% efficiency. Seamlessly integrates with your home Wi-Fi.",
-    features: ["99% Peak Conversion Efficiency", "IP65 rated", "Wi-Fi & Bluetooth monitoring", "Seamless battery integration"],
-    images: ["/images/stock/p-2.jpeg", "/images/stock/p-8.jpeg"]
+    id: 2, 
+    title: "Smart Hybrid Inverters", 
+    category: "Inverters",
+    shortDesc: "Advanced hybrid inverters ranging from 3.6KW to 100KW with smart load management.",
+    description: "Our Hybrid Inverters (available in 3.6KW up to 100KW) are the brain of your energy system. They feature a battery-independent design, dual MPPT for maximum power point tracking, and built-in Wi-Fi so you can monitor your grid in real-time via Android or iOS. Engineered with strong protection features and a wide input voltage range.",
+    features: [
+      "Capacities from 3.6KW to 100KW", 
+      "Dual outputs for smart load management", 
+      "Built-in Wi-Fi for Android/iOS monitoring", 
+      "Battery equalization and compatibility"
+    ],
+    images: [
+      "/images/products/p-in-1.jpeg", 
+      "/images/products/p-in-2.jpeg", 
+    ]
   },
   {
-    id: 3, title: "Aura Home Battery 10kWh", category: "Energy Storage", price: "$5,400.00",
+    id: 3, 
+    title: "Lithium-Ion Energy Storage", 
+    category: "Batteries",
+    shortDesc: "High-efficiency, space-saving lithium-ion batteries with a 12-15 year lifespan.",
+    description: "Experience reliable backup power with our advanced Lithium-Ion Technology. Offering 85%-95% efficiency with minimal energy loss, these batteries support a safe 70%-90% Depth of Discharge. The built-in Battery Management System (BMS) automatically protects against overcharging, short circuits, and temperature issues, ensuring improved safety and thermal stability.",
+    features: [
+      "3000-6000+ charge cycles (12-15 year lifespan)", 
+      "Fast charging & space-saving design", 
+      "85%-95% high efficiency storage", 
+      "Built-in BMS (Battery Management System)"
+    ],
+    images: [
+      "/images/products/p-b-1.jpeg", 
+      "/images/products/p-b-2.jpeg", 
+      "/images/products/p-b-3.jpeg", 
+    ]
+  },
+  {
+    id: 4, 
+    title: "Solar Water Heaters", 
+    category: "Thermal Solar",
+    shortDesc: "Eco-friendly, cost-saving solar water heating systems available in multiple capacities.",
+    description: "Drastically reduce your energy bills with our highly durable and low-maintenance solar water heaters. Designed to be eco-friendly and cost-saving, these systems feature backup heating compatibility ensuring you have a continuous hot water supply no matter the weather conditions.",
+    features: [
+      "100L, 150L, and 200L capacity options", 
+      "Eco-friendly and cost-saving", 
+      "Backup heating compatibility", 
+      "High durability & low maintenance"
+    ],
+    images: [
+      "/images/products/p-w.jpeg", 
+    ]
+  },
+  {
+    id: 6, title: "Aura Home Battery 10kWh", category: "Energy Storage",
     shortDesc: "Sleek, wall-mounted lithium-ion battery to keep your home powered through the night.",
     description: "Store your excess solar energy during the day and power your home at night or during grid outages.",
     features: ["10kWh usable capacity", "10-year cycle warranty", "Liquid thermal control", "Grid-outage switchover"],
     images: ["/images/stock/p-3.jpeg", "/images/stock/p-7.jpeg"]
   },
-  {
-    id: 4, title: "Titan Mounting Array", category: "Hardware", price: "Variable",
-    shortDesc: "Heavy-duty ground and roof mounting brackets engineered for maximum stability.",
-    description: "The foundation of any great solar system. Forged from galvanized steel and anodized aluminum.",
-    features: ["Adjustable tilt angles", "Galvanized steel", "Pre-assembled components", "150 mph wind load rating"],
-    images: ["/images/stock/p-4.jpeg"]
-  },
-  {
-    id: 5, title: "Solar Edge Optimizer", category: "Power Conversion", price: "$180.00",
-    shortDesc: "Module-level DC power optimizer to mitigate shading losses.",
-    description: "Connects to each individual panel to maximize power output and provide module-level monitoring.",
-    features: ["99.5% peak efficiency", "Mitigates all shading losses", "Module-level voltage shutdown", "25-year warranty"],
-    images: ["/images/stock/p-5.jpeg", "/images/stock/p-1.jpeg"]
-  },
-  {
-    id: 6, title: "Lumina 400W Residential", category: "Residential Solar", price: "$290.00",
-    shortDesc: "All-black aesthetic panel designed specifically for modern residential roofs.",
-    description: "Combines high power density with a sleek, all-black design that blends seamlessly into any roof type.",
-    features: ["All-black aesthetic", "20.1% Efficiency", "Advanced snow load resistance", "25-year performance guarantee"],
-    images: ["/images/stock/p-6.jpeg", "/images/stock/p-2.jpeg"]
-  },
-  {
-    id: 7, title: "GridTie Charge Controller", category: "Power Conversion", price: "$850.00",
-    shortDesc: "Advanced charge controller for off-grid and hybrid solar installations.",
-    description: "Manages the power going into the battery bank from the solar array to prevent overcharging.",
-    features: ["MPPT Technology", "Compatible with Lithium & Lead Acid", "LCD Display", "Built-in fault protection"],
-    images: ["/images/stock/p-7.jpeg"]
-  },
-  {
-    id: 8, title: "VoltX Industrial Battery 50kWh", category: "Energy Storage", price: "Request Quote",
-    shortDesc: "Massive scale storage solution for commercial and industrial facilities.",
-    description: "Designed for peak shaving and load shifting in high-demand commercial environments.",
-    features: ["50kWh capacity per cabinet", "Scalable to 2MWh", "Advanced BMS", "NEMA 3R enclosure"],
-    images: ["/images/stock/p-8.jpeg", "/images/stock/p-3.jpeg"]
-  },
-  {
-    id: 9, title: "Aero Tracker Single-Axis", category: "Hardware", price: "Variable",
-    shortDesc: "Automated solar tracking system that follows the sun to increase yield by up to 25%.",
-    description: "Motorized single-axis tracker designed for utility-scale solar farms. Maximizes daily energy production.",
-    features: ["Up to 25% yield increase", "Self-calibrating algorithms", "Low maintenance AC motors", "Extreme weather stow mode"],
-    images: ["/images/stock/p-1.jpeg", "/images/stock/p-5.jpeg"]
-  },
-  {
-    id: 10, title: "Nexus Hybrid Inverter", category: "Power Conversion", price: "$1,800.00",
-    shortDesc: "The ultimate all-in-one inverter for solar, battery, and grid integration.",
-    description: "Seamlessly manages power from solar panels, battery storage, and the utility grid simultaneously.",
-    features: ["8kW continuous output", "Built-in generator support", "0-millisecond transfer time", "Mobile app control"],
-    images: ["/images/stock/p-2.jpeg", "/images/stock/p-6.jpeg"]
-  },
-  {
-    id: 11, title: "FlexiPanel 150W Portable", category: "Portable Solar", price: "$220.00",
-    shortDesc: "Lightweight, foldable solar panel for RVs, camping, and off-grid living.",
-    description: "Highly durable, flexible solar mat that can be draped over tents or mounted on curved RV roofs.",
-    features: ["Ultra-lightweight (4.5 lbs)", "Waterproof ETFE coating", "MC4 Connectors", "Folds into a briefcase size"],
-    images: ["/images/stock/p-3.jpeg"]
-  },
-  {
-    id: 12, title: "SolarGuard Bird Netting", category: "Accessories", price: "$85.00",
-    shortDesc: "Protective mesh to prevent birds and pests from nesting under your solar array.",
-    description: "Heavy-duty PVC coated galvanized steel wire mesh designed to protect roof-mounted panels.",
-    features: ["100 ft roll", "UV resistant", "Does not void panel warranties", "Easy clip installation"],
-    images: ["/images/stock/p-4.jpeg"]
-  },
-  {
-    id: 13, title: "SunMax Bifacial 540W", category: "Commercial Solar", price: "Request Quote",
-    shortDesc: "Captures sunlight from both sides, generating up to 30% more energy.",
-    description: "Dual-glass module that utilizes reflected light from the ground to boost overall energy yield.",
-    features: ["Up to 30% backside yield", "Dual-glass durability", "Zero Light Induced Degradation", "30-year warranty"],
-    images: ["/images/stock/p-5.jpeg", "/images/stock/p-8.jpeg"]
-  },
-  {
-    id: 14, title: "EcoMeter Energy Monitor", category: "Accessories", price: "$150.00",
-    shortDesc: "Real-time consumption monitor to track your entire home's energy usage.",
-    description: "Installs in your electrical panel to provide second-by-second data on what your home is consuming.",
-    features: ["Tracks usage by appliance", "Real-time cost tracking", "Wi-Fi enabled", "iOS & Android compatible"],
-    images: ["/images/stock/p-6.jpeg"]
-  },
-  {
-    id: 15, title: "AquaSun Solar Water Heater", category: "Thermal Solar", price: "$1,400.00",
-    shortDesc: "Evacuated tube solar collector for highly efficient domestic water heating.",
-    description: "Uses the sun's thermal energy to heat your home's water, drastically reducing gas or electric heating bills.",
-    features: ["Heats water even in winter", "Corrosion resistant", "80-gallon capacity", "Reduces water heating costs by 70%"],
-    images: ["/images/stock/p-7.jpeg", "/images/stock/p-1.jpeg"]
-  },
-  {
-    id: 16, title: "ChargePro EV Station", category: "Accessories", price: "$650.00",
-    shortDesc: "Level 2 Electric Vehicle charger designed to sync with your solar production.",
-    description: "Charge your EV using only excess solar energy, ensuring you drive on 100% clean power.",
-    features: ["48 Amp charging", "Solar-only charging mode", "Universal J1772 connector", "Indoor/Outdoor rated"],
-    images: ["/images/stock/p-8.jpeg", "/images/stock/p-2.jpeg"]
-  },
-  {
-    id: 17, title: "Lumina Mini 50W", category: "Portable Solar", price: "$75.00",
-    shortDesc: "Compact solar charger for keeping tools and devices powered on job sites.",
-    description: "Ruggedized mini-panel with integrated USB-C and standard DC outputs.",
-    features: ["Integrated USB-C PD", "Impact resistant", "Built-in kickstand", "Direct device charging"],
-    images: ["/images/stock/p-1.jpeg"]
-  },
-  {
-    id: 18, title: "Aura Stack Expansion", category: "Energy Storage", price: "$4,200.00",
-    shortDesc: "Add-on battery module to expand your existing Aura Home Battery system.",
-    description: "Easily expand your storage capacity as your energy needs grow. Plugs directly into the main Aura hub.",
-    features: ["Adds 10kWh capacity", "Plug-and-play installation", "Auto-balancing", "Space-saving stackable design"],
-    images: ["/images/stock/p-2.jpeg", "/images/stock/p-4.jpeg"]
-  },
-  {
-    id: 19, title: "Titan Roof Hooks", category: "Hardware", price: "$12.00",
-    shortDesc: "Tile-roof specific mounting hooks that eliminate the need for drilling.",
-    description: "Designed to slide under standard curved tiles to anchor the racking system without compromising roof integrity.",
-    features: ["Stainless steel", "No drilling required", "Fits Spanish and flat tiles", "Load tested"],
-    images: ["/images/stock/p-3.jpeg"]
-  },
-  {
-    id: 20, title: "SolarEdge Hub", category: "Power Conversion", price: "$2,100.00",
-    shortDesc: "Centralized power hub for managing complex multi-array solar deployments.",
-    description: "The brain of a large-scale residential system, handling multiple inverter strings and battery banks.",
-    features: ["Manages up to 3 inverters", "Integrated backup gateway", "EV charger ready", "12-year warranty"],
-    images: ["/images/stock/p-4.jpeg"]
-  },
-  {
-    id: 21, title: "MicroGrid Control Unit", category: "Commercial Solar", price: "Request Quote",
-    shortDesc: "Industrial controller for creating localized, self-sustaining microgrids.",
-    description: "Disconnects commercial facilities from the main grid during outages and balances local generation and storage.",
-    features: ["Seamless islanding", "Generator synchronization", "Phase balancing", "Utility-grade switchgear"],
-    images: ["/images/stock/p-5.jpeg", "/images/stock/p-7.jpeg"]
-  },
-  {
-    id: 22, title: "SunMax Flex 300W", category: "Commercial Solar", price: "Request Quote",
-    shortDesc: "Lightweight, flexible panel for commercial buildings with weight-restricted roofs.",
-    description: "Adheres directly to TPO and membrane roofs without the need for heavy metal racking.",
-    features: ["No racking required", "70% lighter than standard panels", "Peel-and-stick backing", "Walkable surface"],
-    images: ["/images/stock/p-6.jpeg"]
-  },
-  {
-    id: 23, title: "VoltX Rack Mount 5kWh", category: "Energy Storage", price: "$2,800.00",
-    shortDesc: "Server-rack style battery module for DIY off-grid enthusiasts.",
-    description: "Standard 19-inch rack mountable lithium iron phosphate (LiFePO4) battery.",
-    features: ["LiFePO4 chemistry", "Fits standard server racks", "Built-in breaker", "Parallel up to 16 units"],
-    images: ["/images/stock/p-7.jpeg", "/images/stock/p-1.jpeg"]
-  },
-  {
-    id: 24, title: "EcoGrid Microinverter", category: "Power Conversion", price: "$145.00",
-    shortDesc: "Panel-level AC inverter for complex residential roofs with multiple angles.",
-    description: "Converts DC to AC directly beneath the panel, ensuring one shaded panel doesn't affect the rest of the array.",
-    features: ["Panel-level conversion", "No high-voltage DC on roof", "25-year warranty", "Plug-and-play trunk cable"],
-    images: ["/images/stock/p-8.jpeg"]
-  },
-  {
-    id: 25, title: "SolarGuard Cleaning Kit", category: "Accessories", price: "$120.00",
-    shortDesc: "Extendable water-fed pole and soft-bristle brush for safe panel maintenance.",
-    description: "Keep your array operating at peak efficiency by safely removing dust, pollen, and bird droppings from the ground.",
-    features: ["24ft carbon fiber pole", "Scratch-free bristles", "Inline soap dispenser", "Standard hose attachment"],
-    images: ["/images/stock/p-1.jpeg", "/images/stock/p-3.jpeg"]
-  }
 ];
 
 const ITEMS_PER_PAGE = 8;
@@ -221,7 +121,6 @@ export default function ProductsSection() {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    // Smooth scroll back to the top of the product section when changing pages
     if (sectionRef.current) {
       const yOffset = sectionRef.current.getBoundingClientRect().top + window.scrollY - 100;
       window.scrollTo({ top: yOffset, behavior: 'smooth' });
@@ -251,7 +150,7 @@ export default function ProductsSection() {
   };
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#f8f9fa] font-sans py-20 lg:py-32">
+    <section id='view-products' ref={sectionRef} className="w-full bg-[#f8f9fa] font-sans py-20 lg:py-32">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col min-h-screen">
         
         {/* --- SECTION HEADER --- */}
@@ -264,7 +163,7 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        {/* --- PRODUCT GRID (Animated on page change) --- */}
+        {/* --- PRODUCT GRID --- */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16">
           <AnimatePresence mode="wait">
             {currentProducts.map((product) => (
@@ -287,7 +186,6 @@ export default function ProductsSection() {
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-sm text-[10px] font-bold tracking-widest uppercase text-[#061d38]">
                     {product.category}
                   </div>
-                  {/* Overlay Hover Icon */}
                   <div className="absolute inset-0 bg-[#061d38]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="bg-white text-[#061d38] rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-lg">
                       <ArrowRight size={24} />
@@ -303,14 +201,14 @@ export default function ProductsSection() {
                   <p className="text-gray-500 text-[13px] sm:text-[14px] leading-relaxed mb-4 line-clamp-2">
                     {product.shortDesc}
                   </p>
+                  
                   <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-100">
-                    <span className="font-extrabold text-yellow-400 text-[16px]">
-                      {product.price}
-                    </span>
-                    <span className="text-[12px] font-bold text-[#061d38] uppercase tracking-wider group-hover:text-yellow-400 transition-colors">
+                    <span className="text-[14px] font-bold text-[#04c453] uppercase tracking-wider group-hover:text-[#061d38] transition-colors">
                       View Details
                     </span>
+                    <ArrowRight size={18} className="text-gray-400 group-hover:text-[#04c453] transition-colors" />
                   </div>
+
                 </div>
               </motion.div>
             ))}
@@ -396,7 +294,8 @@ export default function ProductsSection() {
                 <X size={20} />
               </button>
 
-              <div className="w-full lg:w-[50%] bg-[#f8f9fa] flex flex-col p-4 sm:p-6 lg:p-8 border-r border-gray-100">
+              {/* FIX: Added shrink-0 and border-b for mobile so the image slider doesn't absorb the scrolling space */}
+              <div className="w-full lg:w-[50%] shrink-0 bg-[#f8f9fa] flex flex-col p-4 sm:p-6 lg:p-8 border-b lg:border-b-0 lg:border-r border-gray-100">
                 <div className="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden bg-gray-200 mb-4 group shadow-sm shrink-0">
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -450,18 +349,15 @@ export default function ProductsSection() {
                 )}
               </div>
 
-              <div className="w-full lg:w-[50%] p-6 sm:p-8 lg:p-12 flex flex-col overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200">
+              {/* FIX: Added flex-1 and min-h-0 so the description perfectly scrolls on mobile */}
+              <div className="w-full lg:w-[50%] p-6 sm:p-8 lg:p-12 flex flex-1 flex-col overflow-y-auto min-h-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-200">
                 <span className="text-[#04c453] text-[12px] font-bold tracking-widest uppercase mb-2">
                   {selectedProduct.category}
                 </span>
                 
-                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#061d38] tracking-tight mb-4">
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-[#061d38] tracking-tight mb-8 pb-6 border-b border-gray-100">
                   {selectedProduct.title}
                 </h2>
-                
-                <div className="text-2xl font-black text-yellow-400 mb-6 pb-6 border-b border-gray-100">
-                  {selectedProduct.price}
-                </div>
 
                 <h3 className="text-[16px] font-bold text-[#061d38] mb-3">Product Overview</h3>
                 <p className="text-gray-500 text-[15px] leading-relaxed mb-8">
@@ -482,10 +378,12 @@ export default function ProductsSection() {
                   ))}
                 </ul>
 
-                <Link href="/contact"
-                className="mt-auto w-full flex items-center justify-center gap-3 bg-[#061d38] hover:bg-amber-400 text-white py-4 sm:py-5 px-8 font-bold text-[15px] uppercase tracking-wider transition-colors duration-300 rounded-sm shadow-md">
+                <Link 
+                  href="/contact"
+                  className="mt-auto w-full shrink-0 flex items-center justify-center gap-3 bg-[#061d38] hover:bg-[#04c453] text-white py-4 sm:py-5 px-8 font-bold text-[15px] uppercase tracking-wider transition-colors duration-300 rounded-sm shadow-md"
+                >
                   <ShoppingCart size={20} />
-                  Contact Us now
+                  Request Product
                 </Link>
               </div>
 

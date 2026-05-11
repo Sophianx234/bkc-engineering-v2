@@ -76,7 +76,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section className="w-full bg-white px-6 py-24 font-sans md:px-12 lg:px-24">
+    <section id="view-projects" className="w-full bg-white px-6 py-24 font-sans md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         
         {/* =========================================

@@ -22,8 +22,8 @@ const servicesData: CoreService[] = [
     id: "01",
     title: "Solar Design & Consultation",
     overlayText: "Tailored solar solutions built around your energy needs, budget, and environment.",
-    ctaText: "Get a Quote",
-    ctaLink: "#quote",
+    ctaText: "Request Service",
+    ctaLink: "/contact",
     imageUrl: "/images/stock/h-4.jpeg",
     features: [
       "Energy needs assessment",
@@ -36,8 +36,8 @@ const servicesData: CoreService[] = [
     id: "02",
     title: "Energy Audits",
     overlayText: "We analyze your energy consumption to identify inefficiencies and reduce costs.",
-    ctaText: "Learn More",
-    ctaLink: "#learn-more",
+    ctaText: "Request Service",
+    ctaLink: "/contact",
     imageUrl: "/images/stock/w-16.jpeg",
     features: [
       "Energy usage analysis",
@@ -50,9 +50,8 @@ const servicesData: CoreService[] = [
     id: "03",
     title: "Backup Power Solutions",
     overlayText: "Ensure uninterrupted power supply with reliable backup systems for homes and businesses.",
-    ctaText: "Get a Quote",
-    ctaLink: "#quote",
-    // Represents a modern, clean electrical/battery inverter setup
+    ctaText: "Request Service",
+    ctaLink: "/contact",
     imageUrl: "/images/stock/w-10.jpeg",
     features: [
       "Battery storage solutions",
@@ -65,9 +64,8 @@ const servicesData: CoreService[] = [
     id: "04",
     title: "Solar Installation",
     overlayText: "Professional installation of high-quality solar systems for maximum efficiency and durability.",
-    ctaText: "Get a Quote",
-    ctaLink: "#quote",
-    // Shows professionals actively installing solar panels on a roof
+    ctaText: "Request Service",
+    ctaLink: "/contact",
     imageUrl: "https://images.unsplash.com/photo-1594818379496-da1e345b0ded?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Residential & commercial installations",
@@ -80,9 +78,8 @@ const servicesData: CoreService[] = [
     id: "05",
     title: "Electrical Engineering Services",
     overlayText: "Comprehensive electrical solutions delivered to meet industry standards and client requirements.",
-    ctaText: "Get a Quote",
-    ctaLink: "#quote",
-    // Shows an engineer/electrician working on a complex commercial distribution board
+    ctaText: "Request Service",
+    ctaLink: "/contact",
     imageUrl: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop",
     features: [
       "Electrical system design",
@@ -95,9 +92,8 @@ const servicesData: CoreService[] = [
     id: "06",
     title: "Maintenance & Repairs",
     overlayText: "We keep your system operating at peak performance with regular maintenance and fast repairs.",
-    ctaText: "Get a Quote",
-    ctaLink: "#quote",
-
+    ctaText: "Request Service",
+    ctaLink: "/contact",
     imageUrl: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop",
     features: [
       "Routine system inspections",
@@ -122,23 +118,23 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
       className="mb-24 flex flex-col w-full"
     >
       {/* Top Header: ID & Title */}
-      <div className="mb-8 flex items-center justify-between text-slate-900">
-        <span className="text-xl font-medium lg:text-2xl">{service.id}</span>
-        <h3 className="text-xl font-medium lg:text-2xl">{service.title}</h3>
+      <div className="mb-6 md:mb-8 flex items-center justify-between text-slate-900 gap-4">
+        <span className="text-xl font-medium lg:text-2xl shrink-0">{service.id}</span>
+        <h3 className="text-xl font-medium lg:text-2xl text-right md:text-left">{service.title}</h3>
       </div>
 
       {/* Two-Column Body Layout */}
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_2fr] lg:gap-16">
+      <div className={`grid grid-cols-1 gap-8 md:gap-12 ${isImageLeft ? "lg:grid-cols-[2fr_1fr]" : "lg:grid-cols-[1fr_2fr]"} lg:gap-16`}>
         
         {/* Features List Column */}
         <div className={`flex flex-col justify-center ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
-          <ul className="flex flex-col gap-6">
+          <ul className="flex flex-col gap-4 sm:gap-6">
             {service.features.map((feature, i) => (
-              <li key={i} className="flex items-center gap-5">
+              <li key={i} className="flex items-center gap-4 sm:gap-5">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white shadow-sm">
                   <Sun size={18} className="text-slate-700" strokeWidth={2} />
                 </div>
-                <span className="text-sm font-medium text-slate-600 md:text-base">
+                <span className="text-sm font-medium text-slate-600 md:text-base leading-snug">
                   {feature}
                 </span>
               </li>
@@ -147,18 +143,18 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
         </div>
 
         {/* Image Display Column */}
-        <div className={`relative w-2xl  overflow-hidden rounded-[2rem] bg-slate-800 shadow-lg lg:aspect-auto lg:h-[350px] ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
+        {/* FIX: Replaced w-2xl with w-full, added h-[320px] for mobile/tablet, keeping lg:h-[350px] */}
+        <div className={`relative w-full h-[320px] lg:h-[350px] overflow-hidden rounded-[2rem] bg-slate-800 shadow-lg ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
           <Image
             src={service.imageUrl}
             alt={service.title}
             fill
-            
             className="object-cover"
           />
           
           {/* Dark Overlay for Text */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 p-8 text-center transition-colors duration-500 hover:bg-black/40">
-            <p className="mb-6 max-w-sm text-sm font-medium leading-relaxed text-slate-200 md:text-base">
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 p-6 sm:p-8 text-center transition-colors duration-500 hover:bg-black/40">
+            <p className="mb-6 max-w-sm text-sm sm:text-[15px] font-medium leading-relaxed text-slate-200">
               {service.overlayText}
             </p>
             
@@ -167,7 +163,7 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
               className="group flex items-center gap-3 rounded-full border border-white/30 bg-white/10 py-1.5 pl-5 pr-1.5 text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white hover:text-black"
             >
               {service.ctaText}
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-black transition-colors group-hover:bg-black group-hover:text-white">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-black transition-colors group-hover:bg-black group-hover:text-white shrink-0">
                 <ArrowUpRight size={14} strokeWidth={2.5} />
               </span>
             </Link>
@@ -182,13 +178,13 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
 // --- Main Exported Component ---
 export default function CoreServicesSection() {
   return (
-    <section className="w-full bg-[#FAFAFA] px-6 py-24 font-sans md:px-12 lg:px-24">
+    <section id="view-services" className="w-full bg-[#FAFAFA] px-4 sm:px-6 py-20 md:py-24 font-sans md:px-12 lg:px-24">
       <div className="mx-auto max-w-6xl">
         
         {/* Section Header with flanking lines */}
-        <div className="mb-20 flex items-center justify-center gap-6">
+        <div className="mb-16 md:mb-20 flex items-center justify-center gap-4 sm:gap-6">
           <div className="h-[1px] flex-grow bg-slate-200" />
-          <h2 className="text-3xl font-semibold tracking-tight text-[#2B3544] md:text-4xl">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#2B3544] md:text-4xl whitespace-nowrap">
             Our Core Services
           </h2>
           <div className="h-[1px] flex-grow bg-slate-200" />

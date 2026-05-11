@@ -5,15 +5,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-
-
 type heroxProps = {
   backgroundImage: string;
   title: string;
   subtitle: string;
   titleSecondary?: string;
 }
-
 
 function HeroX({ backgroundImage, title, subtitle, titleSecondary }: heroxProps) {
   const containerVariants = {
@@ -33,9 +30,23 @@ function HeroX({ backgroundImage, title, subtitle, titleSecondary }: heroxProps)
     },
   };
 
+  // --- PERFECT SMOOTH SCROLL LOGIC ---
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    // Safely extract the target word just like your button label does
+    const targetWord = title.split(" ")[1]?.toLowerCase() || "";
+    const element = document.getElementById(`view-${targetWord}`);
+    
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  };
 
   return (
-    <div className="relative pt-28 flex h-dvh w-full overflow-hidden flex-col justify-between overflow-hidden  font-sans text-white ">
+    <div className="relative pt-28 flex h-dvh w-full flex-col justify-between overflow-hidden font-sans text-white">
       
       {/* Background Image & Lighting Overlay */}
       <div className="absolute inset-0 z-0">
@@ -48,10 +59,8 @@ function HeroX({ backgroundImage, title, subtitle, titleSecondary }: heroxProps)
           className="object-cover"
         />
         {/* Radial gradient creates the centered spotlight effect over the text */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50  to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-black/50" />
       </div>
-
-      
 
       {/* Main Hero Content */}
       <main className="relative z-10 flex flex-grow flex-col items-center justify-center px-6 text-center md:px-12 lg:px-16">
@@ -85,28 +94,30 @@ function HeroX({ backgroundImage, title, subtitle, titleSecondary }: heroxProps)
               variants={itemVariants} 
               className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:gap-6"
             >
-              {/* Primary Solid Button */}
-              <Link 
-              href={`#view-${title.split(" ")[1].toLowerCase()}`} 
-              className="group flex items-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-slate-900 transition-all hover:bg-slate-100"
-            >
-              View {title.split(" ")[1]} {/* Extracts the first word for a more dynamic button label */}
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white transition-transform group-hover:scale-105">
-                <ArrowUpRight size={16} strokeWidth={2.5} />
-              </span>
-            </Link>
+              {/* Primary Solid Button - Changed to <a> with custom scroll logic */}
+              <a 
+                href={`#view-${title.split(" ")[1]?.toLowerCase()}`} 
+                onClick={handleSmoothScroll}
+                className="group flex items-center gap-4 rounded-full bg-white py-2 pl-6 pr-2 text-sm font-semibold text-slate-900 transition-all hover:bg-slate-100 cursor-pointer"
+              >
+                View {title.split(" ")[1]}
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white transition-transform group-hover:scale-105">
+                  <ArrowUpRight size={16} strokeWidth={2.5} />
+                </span>
+              </a>
 
-            {/* Secondary Glass Button */}
-            <Link 
-              href="#get-quote" 
-              className="group flex items-center gap-4 rounded-full border border-white/30 bg-white/5 py-2 pl-6 pr-2 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/10"
-            >
-              Get a Quote
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-900 transition-transform group-hover:scale-105">
-                <ArrowUpRight size={16} strokeWidth={2.5} />
-              </span>
-            </Link>
-          </motion.div>)}
+              {/* Secondary Glass Button - Keeps Link because it routes to a new page */}
+              <Link 
+                href="/contact" 
+                className="group flex items-center gap-4 rounded-full border border-white/30 bg-white/5 py-2 pl-6 pr-2 text-sm font-semibold text-white backdrop-blur-md transition-all hover:bg-white/10"
+              >
+                Request Service
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-slate-900 transition-transform group-hover:scale-105">
+                  <ArrowUpRight size={16} strokeWidth={2.5} />
+                </span>
+              </Link>
+            </motion.div>
+          )}
         </motion.div>
       </main>
       
@@ -115,6 +126,5 @@ function HeroX({ backgroundImage, title, subtitle, titleSecondary }: heroxProps)
     </div>
   );
 }
- 
 
-export default HeroX
+export default HeroX;

@@ -104,7 +104,6 @@ export default function ServicesSection() {
                 initial={{ opacity: 0, scale: 1.05 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                // Premium easing curve for a polished, professional feel
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }} 
                 className="absolute inset-0"
               >
@@ -128,37 +127,61 @@ export default function ServicesSection() {
                 const isActive = activeIndex === index;
 
                 return (
-                  <button
-                    key={service.id}
-                    onClick={() => setActiveIndex(index)}
-                    className={`group flex w-full items-center justify-between border-b py-4 transition-all duration-300 ease-out focus:outline-none ${
-                      isActive 
-                        ? "border-slate-800 text-slate-900" 
-                        : "border-slate-200 text-slate-500 hover:border-slate-400 hover:text-slate-700"
+                  <div 
+                    key={service.id} 
+                    className={`flex flex-col border-b transition-colors duration-300 ${
+                      isActive ? "border-slate-800" : "border-slate-200"
                     }`}
-                    aria-expanded={isActive}
                   >
-                    <span className={`text-base tracking-tight transition-all ${
-                      isActive ? "font-semibold" : "font-medium"
-                    }`}>
-                      {service.title}
-                    </span>
-                    <ArrowUpRight
-                      size={20}
-                      strokeWidth={isActive ? 2.5 : 2}
-                      className={`transition-all duration-300 ${
+                    <button
+                      onClick={() => setActiveIndex(index)}
+                      className={`group flex w-full items-center justify-between py-4 transition-all duration-300 ease-out focus:outline-none ${
                         isActive 
-                          ? "translate-x-1 -translate-y-1 text-slate-900" 
-                          : "text-slate-400 group-hover:text-slate-600"
+                          ? "text-slate-900" 
+                          : "text-slate-500 hover:text-slate-700"
                       }`}
-                    />
-                  </button>
+                      aria-expanded={isActive}
+                    >
+                      <span className={`text-base tracking-tight transition-all text-left ${
+                        isActive ? "font-semibold" : "font-medium"
+                      }`}>
+                        {service.title}
+                      </span>
+                      <ArrowUpRight
+                        size={20}
+                        strokeWidth={isActive ? 2.5 : 2}
+                        className={`shrink-0 transition-all duration-300 ${
+                          isActive 
+                            ? "translate-x-1 -translate-y-1 text-slate-900" 
+                            : "text-slate-400 group-hover:text-slate-600"
+                        }`}
+                      />
+                    </button>
+
+                    {/* MOBILE ONLY: Accordion Description */}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden lg:hidden"
+                        >
+                          <p className="pb-5 text-[14px] leading-relaxed text-slate-600">
+                            {service.description}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 );
               })}
             </div>
 
-            {/* Right: Dynamic Description */}
-            <div className="pt-2 lg:col-span-5">
+            {/* Right: Dynamic Description (DESKTOP ONLY) */}
+            {/* hidden on mobile, flex on large screens */}
+            <div className="hidden lg:flex pt-2 lg:col-span-5">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={activeService.id}
