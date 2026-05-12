@@ -15,7 +15,7 @@ const featuredFeatures = [
 const otherProjects = [
   {
     id: 1,
-    location: "East Legon",
+    location: "Danfa",
     imageUrl: "/images/stock/w-1.jpeg", // Replace with actual project image URL
   },
   {
@@ -25,7 +25,7 @@ const otherProjects = [
   },
   {
     id: 3,
-    location: "Tema", // Added a 3rd location for the battery system image
+    location: "Tema community 25", // Added a 3rd location for the battery system image
     imageUrl: "/images/stock/w-3.jpeg", // Replace with actual project image URL
   },
   {
@@ -36,7 +36,7 @@ const otherProjects = [
   ,
   {
     id: 5,
-    location: "37 Area",
+    location: "Kumawu Bodomase",
     imageUrl: "/images/stock/h-2.jpeg", // Replace with actual project image URL
   },
   {
@@ -53,7 +53,7 @@ const otherProjects = [
   ,
   {
     id: 7,
-    location: "Hatso",
+    location: "Kumawu Bodomase",
     imageUrl: "/images/stock/w-13.jpeg", // Replace with actual project image URL
   }
 ];

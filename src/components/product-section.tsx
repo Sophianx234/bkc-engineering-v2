@@ -29,7 +29,7 @@ const getRandomImages = (count: number) => {
 const PRODUCTS = [
   {
     id: 1, 
-    title: "Bifacial Solar Panels", 
+    title: "Solar Panels", 
     category: "Solar Panels",
     shortDesc: "High-efficiency panels that capture sunlight from both the front and back for maximum yield.",
     description: "Our advanced solar panels are engineered to capture photons of suitable sunlight from both the front and back surfaces, significantly increasing your overall energy output. We offer a versatile range of capacities from 180W up to 615W to perfectly match the energy requirements of any residential, commercial, or industrial project.",
@@ -57,13 +57,14 @@ const PRODUCTS = [
       "Battery equalization and compatibility"
     ],
     images: [
+      "/images/stock/p-3.jpeg",
       "/images/products/p-in-1.jpeg", 
       "/images/products/p-in-2.jpeg", 
     ]
   },
   {
     id: 3, 
-    title: "Lithium-Ion Energy Storage", 
+    title: "Solar Batteries", 
     category: "Batteries",
     shortDesc: "High-efficiency, space-saving lithium-ion batteries with a 12-15 year lifespan.",
     description: "Experience reliable backup power with our advanced Lithium-Ion Technology. Offering 85%-95% efficiency with minimal energy loss, these batteries support a safe 70%-90% Depth of Discharge. The built-in Battery Management System (BMS) automatically protects against overcharging, short circuits, and temperature issues, ensuring improved safety and thermal stability.",
@@ -74,9 +75,8 @@ const PRODUCTS = [
       "Built-in BMS (Battery Management System)"
     ],
     images: [
-      "/images/products/p-b-1.jpeg", 
-      "/images/products/p-b-2.jpeg", 
       "/images/products/p-b-3.jpeg", 
+      "/images/products/p-b-2.jpeg", 
     ]
   },
   {
@@ -95,13 +95,7 @@ const PRODUCTS = [
       "/images/products/p-w.jpeg", 
     ]
   },
-  {
-    id: 6, title: "Aura Home Battery 10kWh", category: "Energy Storage",
-    shortDesc: "Sleek, wall-mounted lithium-ion battery to keep your home powered through the night.",
-    description: "Store your excess solar energy during the day and power your home at night or during grid outages.",
-    features: ["10kWh usable capacity", "10-year cycle warranty", "Liquid thermal control", "Grid-outage switchover"],
-    images: ["/images/stock/p-3.jpeg", "/images/stock/p-7.jpeg"]
-  },
+  
 ];
 
 const ITEMS_PER_PAGE = 8;

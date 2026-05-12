@@ -18,10 +18,37 @@ interface Project {
 // This generates the 23 projects. You can easily override the placeholders
 // by adding the specific project number to the 'customData' object below.
 const customData: Record<number, { size: string; loc: string }> = {
-  1: { size: "20kW system", loc: "East Legon" },
-  2: { size: "60kW system", loc: "Klagon" },
-  3: { size: "15kW system", loc: "Cantonments" }, // Example of how to add more
-  // Add 4 through 23 here as you get the details...
+  1: { size: "20kW system", loc: "Danfa" },
+  2: { size: "20kW system", loc: "East Legon" },
+  3: { size: "60kW system", loc: "Klagon" },
+  4: { size: "15kW system", loc: "Cantonments" },
+  5: { size: "30kW system", loc: "Kumawu Bodomase" }, 
+  6: { size: "30kW system", loc: "Dansoman" },
+  
+  // --- Accra: Prime & High-Growth Residential ---
+  7: { size: "15kW system", loc: "Airport Residential Area" },
+  8: { size: "10kW system", loc: "Ashaley Botwe" },
+  9: { size: "25kW system", loc: "Labone" },
+  10: { size: "12kW system", loc: "Oyarifa" },
+  11: { size: "15kW system", loc: "East Legon Hills" },
+  12: { size: "20kW system", loc: "Tse Addo" },
+  13: { size: "10kW system", loc: "Dzorwulu" },
+  14: { size: "15kW system", loc: "Roman Ridge" },
+  
+  // --- Accra: Commercial/Industrial & Suburban ---
+  15: { size: "50kW system", loc: "Tema Community 25" },
+  16: { size: "40kW system", loc: "Spintex" },
+  17: { size: "100kW system", loc: "North Industrial Area" },
+
+  // --- Kumasi: Prime Executive & High-End Residential ---
+  18: { size: "15kW system", loc: "Nhyiaeso" },
+  19: { size: "20kW system", loc: "Ahodwo" },
+  20: { size: "25kW system", loc: "Danyame" },
+  
+  // --- Kumasi: Middle-Class & Emerging Suburbs ---
+  21: { size: "10kW system", loc: "Santasi" },
+  22: { size: "35kW system", loc: "Asokwa" },
+  23: { size: "8kW system", loc: "Kwadaso" },
 };
 
 const allProjects: Project[] = Array.from({ length: 14 }, (_, i) => {

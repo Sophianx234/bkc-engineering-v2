@@ -106,7 +106,6 @@ const servicesData: CoreService[] = [
 
 // --- Reusable Child Component ---
 const ServiceRow = ({ service, index }: { service: CoreService; index: number }) => {
-  // Determine if the image should be on the left (even index) or right (odd index)
   const isImageLeft = index % 2 === 0;
 
   return (
@@ -115,12 +114,20 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="mb-24 flex flex-col w-full"
+      className="mb-16 md:mb-24 flex flex-col w-full"
     >
-      {/* Top Header: ID & Title */}
-      <div className="mb-6 md:mb-8 flex items-center justify-between text-slate-900 gap-4">
-        <span className="text-xl font-medium lg:text-2xl shrink-0">{service.id}</span>
-        <h3 className="text-xl font-medium lg:text-2xl text-right md:text-left">{service.title}</h3>
+      {/* 
+          Top Header: ID & Title 
+          Typographic Fix: Left-aligned stack on mobile, horizontal split on desktop.
+          This creates a strong, readable margin line.
+      */}
+      <div className="mb-6 md:mb-10 flex flex-col md:flex-row md:items-center justify-start md:justify-between text-slate-900 gap-2 md:gap-4 text-left">
+        <span className="text-sm font-bold tracking-widest  uppercase lg:text-base shrink-0">
+          Service {service.id}
+        </span>
+        <h3 className="text-2xl font-bold lg:text-3xl text-slate-900 leading-tight md:text-right">
+          {service.title}
+        </h3>
       </div>
 
       {/* Two-Column Body Layout */}
@@ -128,13 +135,18 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
         
         {/* Features List Column */}
         <div className={`flex flex-col justify-center ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
-          <ul className="flex flex-col gap-4 sm:gap-6">
+          <ul className="flex flex-col gap-4 sm:gap-6 w-full">
             {service.features.map((feature, i) => (
-              <li key={i} className="flex items-center gap-4 sm:gap-5">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white shadow-sm">
-                  <Sun size={18} className="text-slate-700" strokeWidth={2} />
+              <li 
+                key={i} 
+                // Typographic Fix: Strict flex-row alignment so the icons act as perfect bullet points.
+                className="flex flex-row items-center gap-4 text-left"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-100  shadow-sm">
+                  {/* Brand color added to the icon for premium feel */}
+                  <Sun size={18} className=" text-slate-600" strokeWidth={2} />
                 </div>
-                <span className="text-sm font-medium text-slate-600 md:text-base leading-snug">
+                <span className="text-[15px] font-medium text-slate-600 md:text-base leading-snug">
                   {feature}
                 </span>
               </li>
@@ -143,8 +155,7 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
         </div>
 
         {/* Image Display Column */}
-        {/* FIX: Replaced w-2xl with w-full, added h-[320px] for mobile/tablet, keeping lg:h-[350px] */}
-        <div className={`relative w-full h-[320px] lg:h-[350px] overflow-hidden rounded-[2rem] bg-slate-800 shadow-lg ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
+        <div className={`relative w-full h-[280px] sm:h-[350px] lg:h-[380px] overflow-hidden rounded-[2rem] bg-slate-800 shadow-lg ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
           <Image
             src={service.imageUrl}
             alt={service.title}
@@ -178,7 +189,7 @@ const ServiceRow = ({ service, index }: { service: CoreService; index: number })
 // --- Main Exported Component ---
 export default function CoreServicesSection() {
   return (
-    <section id="view-services" className="w-full bg-[#FAFAFA] px-4 sm:px-6 py-20 md:py-24 font-sans md:px-12 lg:px-24">
+    <section id="view-services" className="w-full bg-[#FAFAFA] px-6 py-20 md:py-24 font-sans md:px-12 lg:px-24">
       <div className="mx-auto max-w-6xl">
         
         {/* Section Header with flanking lines */}

@@ -49,78 +49,106 @@ export default function AfterSalesSupport() {
   const [activeTab, setActiveTab] = useState(supportTabs[0]);
 
   return (
-    <section className="w-full bg-[#0B1121] px-6 py-24 font-sans text-white md:px-12 lg:px-24">
+    <section className="w-full overflow-hidden bg-[#0B1121] px-6 py-20 md:py-24 font-sans text-white md:px-12 lg:px-24">
       <div className="mx-auto max-w-7xl">
         
         {/* Header */}
-        <div className="mb-16 flex flex-col items-start justify-between gap-4 md:flex-row">
+        <div className="mb-12 lg:mb-16 flex flex-col items-start justify-between gap-4 md:flex-row">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl font-semibold leading-tight tracking-tight md:text-5xl"
+            className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl"
           >
-            After Installation, <br /> We Don’t Disappear
+            After Installation, <br className="hidden sm:block" /> We Don’t Disappear
           </motion.h2>
-          <span className="text-sm font-medium uppercase tracking-widest text-slate-500">
+          <span className="text-xs sm:text-sm font-medium uppercase tracking-widest text-slate-500 shrink-0">
             After-sales Support
           </span>
         </div>
 
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
-          {/* Navigation List */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+          
+          {/* Navigation List & Mobile Accordion */}
           <div className="flex flex-col lg:col-span-4">
             {supportTabs.map((tab) => {
               const isActive = activeTab.id === tab.id;
               return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab)}
-                  className={`group flex items-center justify-between border-b py-5 text-left transition-all duration-300 ${
-                    isActive ? "border-white text-white" : "border-slate-800 text-slate-500 hover:text-slate-300"
-                  }`}
-                >
-                  <span className="text-lg font-medium">{tab.title}</span>
-                  <ArrowUpRight 
-                    size={20} 
-                    className={`transition-transform duration-300 ${isActive ? "translate-x-0 opacity-100" : "translate-x-[-10px] opacity-0 group-hover:opacity-50"}`} 
-                  />
-                </button>
+                <div key={tab.id} className="flex flex-col">
+                  <button
+                    onClick={() => setActiveTab(tab)}
+                    className={`group flex items-center justify-between border-b py-4 sm:py-5 text-left transition-all duration-300 ${
+                      isActive ? "border-white text-white" : "border-slate-800 text-slate-500 hover:text-slate-300"
+                    }`}
+                  >
+                    <span className="text-base sm:text-lg font-medium">{tab.title}</span>
+                    <ArrowUpRight 
+                      size={20} 
+                      className={`transition-transform duration-300 ${isActive ? "translate-x-0 opacity-100" : "translate-x-[-10px] opacity-0 group-hover:opacity-50"}`} 
+                    />
+                  </button>
+
+                  {/* MOBILE ONLY: Accordion Description */}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden lg:hidden"
+                      >
+                        <p className="py-4 text-[15px] leading-relaxed text-slate-300">
+                          {tab.description}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               );
             })}
           </div>
 
           {/* Content & Stacked Image Gallery */}
           <div className="lg:col-span-8">
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-8 sm:gap-10">
               
-              {/* Text updates instantly without layout jumping */}
-              <p className="max-w-md text-lg text-slate-300 transition-colors duration-300">
-                {activeTab.description}
-              </p>
+              {/* DESKTOP ONLY: Description */}
+              <div className="hidden lg:block min-h-[60px]">
+                <AnimatePresence mode="wait">
+                  <motion.p 
+                    key={activeTab.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="max-w-md text-lg text-slate-300"
+                  >
+                    {activeTab.description}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
 
               {/* Image Stack Effect */}
-              <div className="relative h-[400px] w-full">
+              {/* Scaled height for mobile (280px) up to desktop (400px) */}
+              <div className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full">
                 
                 {/* Background Stacked Images (Blurred) */}
-                {/* Added transition-opacity so they crossfade smoothly when updating */}
-                <div className="absolute right-0 top-10 h-[300px] w-[250px] translate-x-4 overflow-hidden rounded-3xl opacity-20 blur-sm grayscale transition-opacity duration-500">
+                <div className="absolute right-0 top-6 sm:top-10 h-[200px] sm:h-[300px] w-[180px] sm:w-[250px] translate-x-4 overflow-hidden rounded-3xl opacity-20 blur-sm grayscale transition-opacity duration-500">
                   <Image src={supportTabs[(supportTabs.indexOf(activeTab) + 1) % supportTabs.length].image} alt="Next support" fill className="object-cover" />
                 </div>
-                <div className="absolute right-10 top-5 h-[320px] w-[280px] translate-x-8 overflow-hidden rounded-3xl opacity-40 blur-[2px] grayscale transition-opacity duration-500">
+                <div className="absolute right-6 sm:right-10 top-3 sm:top-5 h-[220px] sm:h-[320px] w-[200px] sm:w-[280px] translate-x-8 overflow-hidden rounded-3xl opacity-40 blur-[2px] grayscale transition-opacity duration-500">
                   <Image src={supportTabs[(supportTabs.indexOf(activeTab) + 2) % supportTabs.length].image} alt="Future support" fill className="object-cover" />
                 </div>
                 
-                {/* Main Focused Image Box - Animation isolated here */}
-                <div className="relative z-10 h-full w-full max-w-[500px] overflow-hidden rounded-[2.5rem] shadow-2xl bg-slate-900">
+                {/* Main Focused Image Box */}
+                <div className="relative z-10 h-full w-full max-w-[500px] overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl bg-slate-900">
                   <AnimatePresence initial={false}>
                     <motion.div
                       key={activeTab.id}
-                      // Solid slide from right (100%) to center (0) to left (-100%)
                       initial={{ x: "100%" }}
                       animate={{ x: 0 }}
                       exit={{ x: "-100%" }}
-                      // Using a premium spring with no bounce for a clean, iOS-style slide
                       transition={{ type: "spring", bounce: 0, duration: 0.6 }}
                       className="absolute inset-0 h-full w-full"
                     >

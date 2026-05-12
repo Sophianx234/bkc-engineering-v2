@@ -37,7 +37,7 @@ const teamMembers = [
   },
   {
     id: 5,
-    name: "MICHAEL TETTEH YEBOAH",
+    name: "MICHAEL TETTE YEBOAH",
     role: "ENGINEER",
     description: `Michael Tetteh Yeboah is a dedicated engineer with a strong background in solar energy systems. He is responsible for the design, installation, and maintenance of our solar installations, ensuring they meet the highest standards of quality and performance.\n\nHis expertise in electrical systems and renewable energy technologies enables him to deliver innovative solutions that maximize efficiency and minimize environmental impact.`,
     image: "/images/prof-3.jpeg",
