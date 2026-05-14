@@ -49,9 +49,11 @@ const customData: Record<number, { size: string; loc: string }> = {
   21: { size: "10kW system", loc: "Santasi" },
   22: { size: "35kW system", loc: "Asokwa" },
   23: { size: "8kW system", loc: "Kwadaso" },
+  24: { size: "8kW system", loc: "Kwadaso" },
+  25: { size: "8kW system", loc: "Kwadaso" },
 };
 
-const allProjects: Project[] = Array.from({ length: 14 }, (_, i) => {
+const allProjects: Project[] = Array.from({ length: 25 }, (_, i) => {
   const num = i + 1;
   const custom = customData[num];
   

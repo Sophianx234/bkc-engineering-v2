@@ -2,7 +2,6 @@ import AboutShowcase from "@/components/about-showcase"
 import ApproachSection from "@/components/approach-section"
 import HeroX from "@/components/hero-x"
 import TeamSection from "@/components/our-team"
-import ServicesHero from "@/components/services-hero"
 import SolarEnvironmentFeatures from "@/components/solar-environment"
 
 function Page() {

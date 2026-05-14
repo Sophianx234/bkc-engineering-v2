@@ -20,7 +20,7 @@ const otherProjects = [
   },
   {
     id: 2,
-    location: "Klagon",
+    location: "East Legon",
     imageUrl: "/images/stock/w-2.jpeg", // Replace with actual project image URL
   },
   {
