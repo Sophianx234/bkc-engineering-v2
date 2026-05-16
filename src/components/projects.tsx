@@ -16,45 +16,127 @@ const otherProjects = [
   {
     id: 1,
     location: "Danfa",
-    imageUrl: "/images/stock/w-1.jpeg", // Replace with actual project image URL
+    imageUrl: "/images/stock/w-1.jpeg",
   },
   {
     id: 2,
     location: "East Legon",
-    imageUrl: "/images/stock/w-2.jpeg", // Replace with actual project image URL
+    imageUrl: "/images/stock/w-2.jpeg",
   },
   {
     id: 3,
-    location: "Tema community 25", // Added a 3rd location for the battery system image
-    imageUrl: "/images/stock/w-3.jpeg", // Replace with actual project image URL
+    location: "Klagon",
+    imageUrl: "/images/stock/w-3.jpeg",
   },
   {
     id: 4,
-    location: "Osu",
-    imageUrl: "/images/stock/w-4.jpeg", // Replace with actual project image URL
-  }
-  ,
+    location: "Cantonments",
+    imageUrl: "/images/stock/w-4.jpeg",
+  },
   {
     id: 5,
     location: "Kumawu Bodomase",
-    imageUrl: "/images/stock/h-2.jpeg", // Replace with actual project image URL
+    imageUrl: "/images/stock/h-2.jpeg", // Kept the 'h' image here
   },
   {
     id: 6,
-    location: "Tse Ado",
-    imageUrl: "/images/stock/h-6.jpeg", // Replace with actual project image URL
-  }
-  ,
+    location: "Dansoman",
+    imageUrl: "/images/stock/h-6.jpeg", // Kept the 'h' image here
+  },
   {
     id: 7,
-    location: "Police City",
-    imageUrl: "/images/stock/w-11.jpeg", // Replace with actual project image URL
-  }
-  ,
+    location: "Airport Residential Area",
+    imageUrl: "/images/stock/w-7.jpeg",
+  },
   {
-    id: 7,
-    location: "Kumawu Bodomase",
-    imageUrl: "/images/stock/w-13.jpeg", // Replace with actual project image URL
+    id: 8,
+    location: "Ashaley Botwe",
+    imageUrl: "/images/stock/w-8.jpeg",
+  },
+  {
+    id: 9,
+    location: "Labone",
+    imageUrl: "/images/stock/w-9.jpeg",
+  },
+  {
+    id: 10,
+    location: "Oyarifa",
+    imageUrl: "/images/stock/w-10.jpeg",
+  },
+  {
+    id: 11,
+    location: "East Legon Hills",
+    imageUrl: "/images/stock/w-11.jpeg",
+  },
+  {
+    id: 12,
+    location: "Tse Addo",
+    imageUrl: "/images/stock/w-12.jpeg",
+  },
+  {
+    id: 13,
+    location: "Dzorwulu",
+    imageUrl: "/images/stock/w-13.jpeg",
+  },
+  {
+    id: 14,
+    location: "Roman Ridge",
+    imageUrl: "/images/stock/w-14.jpeg",
+  },
+  {
+    id: 15,
+    location: "Tema Community 25",
+    imageUrl: "/images/stock/w-15.jpeg",
+  },
+  {
+    id: 16,
+    location: "Spintex",
+    imageUrl: "/images/stock/w-16.jpeg",
+  },
+  {
+    id: 17,
+    location: "North Industrial Area",
+    imageUrl: "/images/stock/w-17.jpeg",
+  },
+  {
+    id: 18,
+    location: "Nhyiaeso",
+    imageUrl: "/images/stock/w-18.jpeg",
+  },
+  {
+    id: 19,
+    location: "Ahodwo",
+    imageUrl: "/images/stock/w-19.jpeg",
+  },
+  {
+    id: 20,
+    location: "Danyame",
+    imageUrl: "/images/stock/w-20.jpeg",
+  },
+  {
+    id: 21,
+    location: "Santasi",
+    imageUrl: "/images/stock/w-21.jpeg",
+  },
+  {
+    id: 22,
+    location: "Asokwa",
+    imageUrl: "/images/stock/w-22.jpeg",
+  },
+  {
+    id: 23,
+    location: "Kwadaso",
+    imageUrl: "/images/stock/w-23.jpeg",
+  },
+  {
+    id: 24,
+    location: "Kwadaso",
+    imageUrl: "/images/stock/w-24.jpeg",
+  },
+  {
+    id: 25,
+    location: "Kwadaso",
+    imageUrl: "/images/stock/w-25.jpeg",
   }
 ];
 
@@ -184,8 +266,7 @@ export default function ProjectsSection() {
                   src={project.imageUrl}
                   alt={`Solar project in ${project.location}`}
                   fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 480px"
+                  className="object-cover transition-transform duration-700 ease-out "
                 />
                 {/* Dark Gradient Overlay for readability on hover/always */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
