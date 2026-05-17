@@ -4,3 +4,4 @@ module.exports = {
   generateRobotsTxt: true, // This automatically generates a robots.txt file alongside the sitemap
   sitemapSize: 7000,
 }
+

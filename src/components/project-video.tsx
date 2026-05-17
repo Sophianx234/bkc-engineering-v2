@@ -6,6 +6,13 @@ import { ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
 
 // --- Solar Project Data ---
 const solarProjects = [
+   {
+    id: 4,
+    title: "Solar Installation Highlight", // Update this title
+    location: "Latest Project Site",     // Update this location
+    description: "A quick behind-the-scenes look at our team actively deploying a new residential solar array.", // Update this description
+    youtubeId: "5O5scSwA--I",            // <-- Added your YouTube Short ID here
+  },
   {
     id: 1,
     title: "Commercial Rooftop Installation",
@@ -27,6 +34,7 @@ const solarProjects = [
     description: "Solar-powered irrigation system allowing for year-round farming and automated water distribution.",
     youtubeId: "vgwsF1DQIU8",
   },
+ 
 ];
 
 export default function ProjectVideoSection() {
