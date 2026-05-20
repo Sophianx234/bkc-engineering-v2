@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "BKC Engineering | Premium Solar & Renewable Energy Solutions",
-  description: "BKC Engineering provides tier-1 solar panel installations, hybrid battery backups, and comprehensive electrical engineering services for homes and businesses across Ghana.",
+  description: "BKC Engineering provides premium solar panel installations, hybrid battery backups, and comprehensive electrical engineering services for homes and businesses across Ghana.",
   keywords: [
     "Solar Energy Ghana", 
     "Solar Installation Accra", 
